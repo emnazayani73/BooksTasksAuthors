@@ -16,8 +16,8 @@ const signup = (req, res, next) => {
       user
         .save()
         .then((response) => {
-          const newUser = response.toObject();
-          delete newUser.password;
+          const newUser = response.toPublic();
+          //delete newUser.password;
           res.status(201).json({
             model: newUser,
             message: "utilisateur crée !",

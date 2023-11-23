@@ -88,10 +88,33 @@ const deleteBook = (req, res) => {
   console.log(req.params.id);
 };
 
+const findBooks = async (req, res) => {
+  try {
+    const books = await Book.findByAuthor(req.params.id);
+
+    if (books.length > 0) {
+      res.status(200).json({
+        booksByAuthor: books,
+        message: "Objects trouvés",
+      });
+    } else {
+      res.status(404).json({
+        message: "Aucun livre trouvé pour cet auteur",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      error: error.message,
+      message: "Problème d'extraction",
+    });
+  }
+};
+
 module.exports = {
   fetchBooks,
   addBooks,
   getBookById,
   updateBooks,
   deleteBook,
+  findBooks,
 };

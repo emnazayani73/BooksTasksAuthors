@@ -6,6 +6,7 @@ const bookRoutes = require("./Routes/book");
 const taskRoutes = require("./Routes/task");
 const userRoutes = require("./Routes/user");
 const authorRoutes = require("./Routes/author");
+const categoryRoutes = require("./Routes/category");
 mongoose
   .connect("mongodb://localhost:27017/MyDataBase", {
     useNewUrlParser: true,
@@ -32,5 +33,6 @@ app.use("/api/books", bookRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/auth", userRoutes);
 app.use("/api/authors", authorRoutes);
+app.use("/api/categories", categoryRoutes);
 
 module.exports = app;

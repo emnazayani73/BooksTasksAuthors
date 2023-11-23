@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../Models/User");
 // verifie est ce que la personne est connecté ou non
 //token ytb3ath fil header sous formpe chiane de caractère
+
 module.exports.loggedMiddleware = (req, res, next) => {
   try {
     const token = req.headers.authorization.split(" ")[1];
